@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>G of Ball — Football Culture</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap');
+:root{--green:#0d241b;--cream:#f1ead8;--gold:#c9a65b;--red:#a94635;--ink:#132019}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Mono",monospace}
+header{position:sticky;top:0;z-index:20;background:var(--green);color:var(--cream);border-bottom:3px solid var(--gold);display:flex;align-items:center;justify-content:space-between;padding:14px 5%}
+.logo{font:44px/1 "Bebas Neue";letter-spacing:2px}.nav{display:flex;gap:24px}.nav a{color:inherit;text-decoration:none;font-size:13px;font-weight:500}.bag{border:0;background:var(--gold);color:var(--green);padding:11px 16px;font:500 12px "DM Mono";cursor:pointer}
+.hero{min-height:82vh;padding:7% 6%;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:40px;background:linear-gradient(135deg,#f1ead8 0 66%,#c9a65b 66%)}
+.kicker{letter-spacing:4px;font-size:12px}.hero h1{font:clamp(85px,13vw,180px)/.78 "Bebas Neue";margin:18px 0;color:var(--green)}.hero p{max-width:610px;line-height:1.7}
+.btn{display:inline-block;margin-top:22px;background:var(--green);color:var(--cream);padding:15px 25px;text-decoration:none;font-weight:bold;border:2px solid var(--green)}
+.ball-wrap{display:grid;place-items:center}.ball{width:min(360px,70vw);aspect-ratio:1;border-radius:50%;background:#f5f0df;border:10px solid var(--green);box-shadow:22px 25px 0 var(--red);display:grid;place-items:center;text-align:center;transform:rotate(-11deg);font:42px/1 "Bebas Neue";color:var(--green)}
+section{padding:75px 6%}.title{font:64px/1 "Bebas Neue";margin-bottom:25px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:25px}.filter{font:12px "DM Mono";padding:10px 14px;background:transparent;border:2px solid var(--green);cursor:pointer}.filter.active{background:var(--green);color:var(--cream)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{background:#f8f3e6;border:2px solid var(--green);overflow:hidden}.visual{height:300px;background:linear-gradient(145deg,#345e49,#16382b);display:grid;place-items:center;position:relative}.visual .emoji{font-size:100px;filter:grayscale(.15);transform:rotate(-15deg)}.badge{position:absolute;left:12px;top:12px;background:var(--gold);padding:6px 9px;font-size:10px;font-weight:bold}.info{padding:18px}.info h3{font:32px "Bebas Neue";margin:0 0 5px}.price{font-size:17px;font-weight:bold;margin-bottom:14px}.select{width:100%;padding:10px;border:1px solid var(--green);background:white;font:12px "DM Mono";margin-bottom:8px}.buy{width:100%;padding:13px;border:0;background:var(--red);color:white;font:bold 12px "DM Mono";cursor:pointer}
+.story{background:var(--green);color:var(--cream);display:grid;grid-template-columns:1fr 1fr;gap:60px}.story .title{color:var(--gold)}.story p{line-height:1.9}.stripe{height:15px;background:repeating-linear-gradient(90deg,var(--red) 0 45px,var(--gold) 45px 90px,var(--green) 90px 135px)}
+footer{background:#08160f;color:var(--cream);padding:35px 6%;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12px}
+.drawer{position:fixed;right:0;top:0;height:100%;width:min(430px,100%);background:var(--cream);z-index:50;padding:25px;transform:translateX(105%);transition:.25s;box-shadow:-15px 0 40px #0004}.drawer.open{transform:none}.x{float:right;border:0;background:none;font-size:30px}.cart-title{font:50px "Bebas Neue";margin:45px 0 20px}.item{padding:15px 0;border-bottom:1px solid #aaa;display:flex;justify-content:space-between;gap:12px}.total{font-size:20px;font-weight:bold;margin:25px 0}.checkout{width:100%;padding:16px;background:var(--green);color:white;border:0;font:bold 13px "DM Mono";cursor:pointer}
+.modal{position:fixed;inset:0;background:#0008;display:none;place-items:center;z-index:60;padding:20px}.modal.show{display:grid}.modalbox{background:var(--cream);max-width:560px;width:100%;padding:28px;border:3px solid var(--green)}.modalbox h2{font:45px "Bebas Neue";margin:0 0 10px}.form{display:grid;gap:10px}.form input,.form select{padding:13px;border:1px solid var(--green);font:12px "DM Mono";background:white}.notice{font-size:11px;line-height:1.6;margin:10px 0}
+@media(max-width:800px){.nav{display:none}.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.story{grid-template-columns:1fr;gap:20px}}@media(max-width:520px){.grid{grid-template-columns:1fr}.logo{font-size:36px}.hero h1{font-size:90px}}
+</style>
+</head>
+<body>
+<header><div class="logo">G OF BALL</div><nav class="nav"><a href="#shop">SHOP</a><a href="#story">STORY</a><a href="#footer">CONTACT</a></nav><button class="bag" onclick="cartOpen()">WARENKORB <span id="count">0</span></button></header>
+<div class="stripe"></div>
+<main>
+<section class="hero"><div><div class="kicker">FOOTBALL CULTURE · EST. 2026</div><h1>THE<br>BEAUTIFUL<br>GAME.</h1><p>Retro-Fußball trifft modernen Streetwear-Vibe. Entdecke Fußballschuhe, Trikots und Accessoires für deinen eigenen Matchday-Style.</p><a class="btn" href="#shop">SHOP NOW →</a></div><div class="ball-wrap"><div class="ball">G OF<br>BALL<br>FC</div></div></section>
+<section id="shop"><div class="title">SHOP THE DROP</div><div class="filters"><button class="filter active" onclick="filter('all',this)">ALLE</button><button class="filter" onclick="filter('shoes',this)">SCHUHE</button><button class="filter" onclick="filter('shirts',this)">TRIKOTS</button><button class="filter" onclick="filter('accessories',this)">ACCESSOIRES</button></div><div class="grid" id="grid"></div></section>
+<section class="story" id="story"><div><div class="title">FOOTBALL<br>IS CULTURE.</div><p>G of Ball steht für die Liebe zum Fußball – auf dem Platz, auf der Straße und auf der Tribüne. Unser Retro-Look erinnert an die großen Fußballjahre und verbindet ihn mit einem modernen Shop-Erlebnis.</p></div><div><div class="title">BUILT FOR<br>MATCHDAY.</div><p>Ausgewählte Styles, klare Preise und Produkte, die zu deinem Fußball-Lifestyle passen. Deine Bestellung kannst du direkt über den Warenkorb vorbereiten.</p></div></section>
+</main>
+<footer id="footer"><b>G OF BALL © 2026</b><span>Instagram · TikTok · hello@gofball.example</span><span>Versand · Rückgabe · Datenschutz</span></footer>
+
+<aside class="drawer" id="drawer"><button class="x" onclick="cartOpen()">×</button><div class="cart-title">WARENKORB</div><div id="items">Noch keine Produkte.</div><div class="total">GESAMT €<span id="total">0.00</span></div><button class="checkout" onclick="checkout()">WEITER ZUR KASSE</button></aside>
+
+<div class="modal" id="modal"><div class="modalbox"><button class="x" onclick="closeModal()">×</button><h2>CHECKOUT</h2><p class="notice">Demo-Checkout: Die Zahlungsanbindung ist noch nicht aktiv. Für einen echten Shop können hier PayPal, Stripe oder Klarna angeschlossen werden.</p><div class="form"><input placeholder="Vor- und Nachname"><input type="email" placeholder="E-Mail-Adresse"><input placeholder="Straße & Hausnummer"><input placeholder="PLZ & Ort"><select><option>Deutschland</option><option>Österreich</option><option>Schweiz</option></select><button class="checkout" onclick="alert('Demo-Bestellung erstellt!');closeModal()">BESTELLUNG ABSENDEN</button></div></div></div>
+
+<script>
+const products=[
+{id:1,n:"GOB Retro Boots",c:"shoes",p:69.99,e:"👟",b:"NEW",s:["40","41","42","43","44","45"]},
+{id:2,n:"Classic 90s Jersey",c:"shirts",p:49.99,e:"👕",b:"RETRO",s:["S","M","L","XL"]},
+{id:3,n:"Street Football Tee",c:"shirts",p:29.99,e:"👕",b:"HOT",s:["S","M","L","XL"]},
+{id:4,n:"Football Scarf",c:"accessories",p:19.99,e:"🧣",b:"",s:["ONE SIZE"]},
+{id:5,n:"Training Boots",c:"shoes",p:59.99,e:"👟",b:"SALE",s:["40","41","42","43","44","45"]},
+{id:6,n:"GOB Cap",c:"accessories",p:24.99,e:"🧢",b:"",s:["ONE SIZE"]}
+];
+let cart=[];
+function render(arr=products){grid.innerHTML=arr.map(p=>`<article class="card"><div class="visual">${p.b?`<span class="badge">${p.b}</span>`:""}<div class="emoji">${p.e}</div></div><div class="info"><h3>${p.n}</h3><div class="price">€${p.p.toFixed(2)}</div><select class="select" id="s${p.id}">${p.s.map(x=>`<option>${x}</option>`).join("")}</select><button class="buy" onclick="add(${p.id})">IN DEN WARENKORB</button></div></article>`).join("")}
+function filter(c,b){document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');render(c==='all'?products:products.filter(x=>x.c===c))}
+function add(id){let p=products.find(x=>x.id===id), size=document.getElementById('s'+id)?.value||"ONE SIZE";cart.push({...p,size});update();document.getElementById('drawer').classList.add('open')}
+function update(){count.textContent=cart.length;items.innerHTML=cart.length?cart.map((x,i)=>`<div class="item"><span><b>${x.n}</b><br>Größe: ${x.size}</span><span>€${x.p.toFixed(2)}<br><button onclick="removeItem(${i})">×</button></span></div>`).join(""):"Noch keine Produkte.";total.textContent=cart.reduce((a,x)=>a+x.p,0).toFixed(2)}
+function removeItem(i){cart.splice(i,1);update()}
+function cartOpen(){drawer.classList.toggle('open')}
+function checkout(){if(!cart.length){alert('Dein Warenkorb ist leer.');return}modal.classList.add('show')}
+function closeModal(){modal.classList.remove('show')}
+render();
+</script>
+</body></html>
